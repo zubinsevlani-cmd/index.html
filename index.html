@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zubin Sevlani | Free Premium Web Development</title>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --border-glow: rgba(99, 102, 241, 0.2);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-indigo: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .workspace-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 1000px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .workspace-container {
+                grid-template-columns: 35% 65%;
+            }
+        }
+
+        /* Left Visual Identity Column */
+        .panel-visual {
+            background: rgba(99, 102, 241, 0.03);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .panel-visual {
+                border-bottom: none;
+                border-right: 1px solid var(--border-glow);
+            }
+        }
+
+        .avatar-frame {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--bg-dark);
+        }
+
+        .badge {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        /* Right Functional Dashboard Column */
+        .panel-content {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Interactive Instant Order Form */
+        .order-form-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .form-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        /* Free Form Backend Integration via Formspree */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-indigo);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .btn-submit {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -10px rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-contacts {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+        }
+
+        .footer-contacts a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .footer-contacts a:hover {
+            color: var(--accent-cyan);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="workspace-container">
+        
+        <div class="panel-visual">
+            <div class="avatar-frame">
+                <img src="me.jpg" alt="Zubin Sevlani">
+            </div>
+            <div class="badge">Open Source Dev</div>
+        </div>
+
+        <div class="panel-content">
+            <h1>Zubin Sevlani</h1>
+            <div class="subtitle">Founder & Lead Web Architect</div>
+            
+            <p class="description">
+                I design ultra-modern, lightning-fast business websites completely for free to expand my elite programming portfolio.
+            </p>
+
+            <div class="order-form-container">
+                <div class="form-title">Request Your Free Website</div>
+                
+                <form action="https://formspree.io" method="POST">
+                    <div class="input-group">
+                        <label>Your Name / Business Name</label>
+                        <input type="text" name="name" required placeholder="e.g. Elite Coffee Shop">
+                    </div>
+                    <div class="input-group">
+                        <label>Your Email Address</label>
+                        <input type="email" name="_replyto" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label>What kind of website do you need?</label>
+                        <textarea name="message" rows="3" required placeholder="Describe your dream site..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Design Order</button>
+                </form>
+            </div>
+
+            <div class="footer-contacts">
+                <span>✉️ <a href="mailto:zubin.sevlani@gmail.com">zubin.sevlani@gmail.com</a></span>
+                <span>📞 <a href="tel:+9710567985067">+971 0567985067</a></span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
